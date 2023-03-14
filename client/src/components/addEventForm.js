@@ -3,7 +3,7 @@ import React, { useReducer } from "react";
 //Empty add form
 const initialState = {
     name: "Event Name",
-    desc: "Describe your event here.",
+    location: "Where is your event?",
     category: "Category",
     date: new Date(),
   };
@@ -16,10 +16,10 @@ const initialState = {
       case "editName":
         return { ...state, name: action.value };
   
-      case "editDesc":
-        return { ...state, description: action.value };
+      case "editLocation":
+        return { ...state, location: action.value };
   
-      case "editCat":
+      case "editCategory":
         return { ...state, category: action.value };
   
       case "wipe":
@@ -85,14 +85,14 @@ const initialState = {
             }}
           />
   
-          <label for="in-eDescription">Event Description:</label>
+          <label for="in-eLocation">Event Location:</label>
           <textarea
-            id="in-eDescription"
+            id="in-eLocation"
             rows="10"
             cols="30"
-            value={state.desc}
+            value={state.location}
             onChange={(e) => {
-              dispatch({ type: "editDesc", value: e.target.value });
+              dispatch({ type: "editLocation", value: e.target.value });
             }}
           />
   
@@ -102,7 +102,7 @@ const initialState = {
             type="text"
             value={state.category}
             onChange={(e) => {
-              dispatch({ type: "editCat", value: e.target.value });
+              dispatch({ type: "editCategory", value: e.target.value });
             }}
           />
   

@@ -26,7 +26,7 @@ SET default_table_access_method = heap;
 
 CREATE TABLE public.events (
     id integer NOT NULL,
-    title text,
+    eventname text,
     location text,
     eventdate date,
     isfavorite boolean DEFAULT false
