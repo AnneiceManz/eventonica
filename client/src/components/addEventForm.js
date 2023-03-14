@@ -30,7 +30,7 @@ const initialState = {
   }
   
   //ADD FORM, CHILD OF EVENTBOARD
-  function EventAddForm(props) {
+  function AddEvent(props) {
     const [state, dispatch] = React.useReducer(reducer, initialState);
   
     const onSubmitForm = async (e) => {
@@ -112,4 +112,4 @@ const initialState = {
     );
   }
   
-  export default EventAddForm;
+  export default AddEvent;
