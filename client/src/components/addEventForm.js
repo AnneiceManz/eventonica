@@ -2,9 +2,9 @@ import React, { useReducer } from "react";
 
 //Empty add form
 const initialState = {
-    name: "Event Name",
-    location: "Where is your event?",
-    category: "Category",
+    eventname: "",
+    location: "",
+    category: "",
     date: new Date(),
   };
   
@@ -13,8 +13,8 @@ const initialState = {
       case "editDate":
         return { ...state, date: action.value };
   
-      case "editName":
-        return { ...state, name: action.value };
+      case "editEventName":
+        return { ...state, eventname: action.value };
   
       case "editLocation":
         return { ...state, location: action.value };
@@ -79,9 +79,9 @@ const initialState = {
           <input
             id="in-eName"
             type="text"
-            value={state.name}
+            value={state.eventname}
             onChange={(e) => {
-              dispatch({ type: "editName", value: e.target.value });
+              dispatch({ type: "editEventName", value: e.target.value });
             }}
           />
   
