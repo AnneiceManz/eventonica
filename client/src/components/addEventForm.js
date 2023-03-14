@@ -17,7 +17,7 @@ const initialState = {
         return { ...state, name: action.value };
   
       case "editDesc":
-        return { ...state, desc: action.value };
+        return { ...state, description: action.value };
   
       case "editCat":
         return { ...state, category: action.value };
