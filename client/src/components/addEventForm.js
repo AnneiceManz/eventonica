@@ -86,10 +86,9 @@ const initialState = {
           />
   
           <label for="in-eLocation">Event Location:</label>
-          <textarea
+          <input
             id="in-eLocation"
-            rows="10"
-            cols="30"
+            type="text"
             value={state.location}
             onChange={(e) => {
               dispatch({ type: "editLocation", value: e.target.value });
