@@ -48,6 +48,28 @@ app.get('/api/events', async (req, res) =>{
     // res.json(events);
 })
 
+//Create a route for the POST
+app.post("/api/events", async (req, res) => {
+    //At the end --> save this event to the db
+    // console.log(req.body)
+    try {
+        const newEvent = {
+            eventname: req.body.eventname,
+            location: req.body.location,
+            eventdate: req.body.eventdate,
+            category: req.body.category
+        }
+
+        const result = await db.query('INSERT INTO events(eventname, location, eventdate, category) VALUES ($1, $2, $3, $4) RETURNING *', [newEvent.eventname, newEvent.location, newEvent.eventdate, newEvent.category]);
+        let response = result.rows[0];
+        console.log(response)
+        res.json(response)
+    } catch (e) {
+        console.log(error)
+        return res.status(400).json({error})
+    }
+})
+
 
 
 app.listen(PORT, () => console.log(`Hola! Server running on Port http://localhost:${PORT}`));
