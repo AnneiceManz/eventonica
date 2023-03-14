@@ -68,7 +68,7 @@ const initialState = {
           <label for="in-eDate">Event Date:</label>
           <input
             id="in-eDate"
-            type="datetime-local"
+            type="date"
             value={state.date}
             onChange={(e) => {
               dispatch({ type: "editDate", value: e.target.value });
