@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useReducer } from "react";
+import React, { useReducer } from "react";
 
 //Empty add form
 const initialState = {
@@ -31,7 +31,7 @@ const initialState = {
   
   //ADD FORM, CHILD OF EVENTBOARD
   function AddEvent(props) {
-    const [state, dispatch] = React.useReducer(reducer, initialState);
+    const [state, dispatch] = useReducer(reducer, initialState);
   
     const onSubmitForm = async (e) => {
       e.preventDefault();
@@ -39,7 +39,7 @@ const initialState = {
         const body = state;
         //console.log("Attempting to post...", JSON.stringify(body)); // TEST
   
-        const response = await fetch("http://localhost:3001/events", {
+        const response = await fetch("http://localhost:8080/api/events", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(body),
