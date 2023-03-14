@@ -28,7 +28,7 @@ CREATE TABLE public.events (
     id integer NOT NULL,
     title text,
     location text,
-    eventtime date,
+    eventdate date,
     isfavorite boolean DEFAULT false
 );
 
@@ -64,12 +64,12 @@ ALTER TABLE ONLY public.events ALTER COLUMN id SET DEFAULT nextval('public.event
 -- Data for Name: events; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.events (id, title, location, eventtime) FROM stdin;
-1	Women in Tech Techtonica Panel	Overland Park Convention Center	2023-04-21
-2	Japanese Cultural Education	Seattle Convention Center	2023-05-12
-3	Haven 90s Party Night Club	Hilton Hotel Kansas City	2023-03-29
-4	Comedy Night at the Station	SF Hilton Hotel	2023-05-25
-5	A Decadent Arts Experience	West Ridge Mall	2023-05-25
+COPY public.events (id, title, location, eventdate, isfavorite) FROM stdin;
+1	Women in Tech Techtonica Panel	Overland Park Convention Center	2023-04-21 false
+2	Japanese Cultural Education	Seattle Convention Center	2023-05-12 false
+3	Haven 90s Party Night Club	Hilton Hotel Kansas City	2023-03-29 false
+4	Comedy Night at the Station	SF Hilton Hotel	2023-05-25 false
+5	A Decadent Arts Experience	West Ridge Mall	2023-05-25 false
 \.
 
 
