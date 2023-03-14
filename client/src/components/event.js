@@ -9,7 +9,7 @@ const EventCard = (props) =>{
       <Card.Title>{props.eventname}</Card.Title>
       <Card.Subtitle className='mb-2 text-muted'>{props.category}</Card.Subtitle>
       <br />
-      <Card.Subtitle className="mb-2 text-muted">Date: {!props.date ? "TBD" : <Moment format={"MM/DD/YYYY"}>{props.date}</Moment>}</Card.Subtitle>
+      <Card.Subtitle className="mb-2 text-muted">Date: {!props.eventdate ? "TBD" : <Moment format={"MM/DD/YYYY"}>{props.eventdate}</Moment>}</Card.Subtitle>
       <Card.Text>
         {props.location}
       </Card.Text>

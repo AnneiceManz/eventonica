@@ -5,13 +5,13 @@ const initialState = {
     eventname: "",
     location: "",
     category: "",
-    date: new Date(),
+    eventdate: new Date(),
   };
   
   function reducer(state, action) {
     switch (action.type) {
       case "editDate":
-        return { ...state, date: action.value };
+        return { ...state, eventdate: action.value };
   
       case "editEventName":
         return { ...state, eventname: action.value };
@@ -69,7 +69,7 @@ const initialState = {
           <input
             id="in-eDate"
             type="date"
-            value={state.date}
+            value={state.eventdate}
             onChange={(e) => {
               dispatch({ type: "editDate", value: e.target.value });
             }}

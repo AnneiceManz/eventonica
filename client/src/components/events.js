@@ -19,7 +19,7 @@ function Events() {
   return (
     <CardGroup className="Events">
             {events.map(event =>
-            <EventCard key={event.id} eventname={event.eventname} location={event.location} date={event.eventdate} category={event.category}/>
+            <EventCard key={event.id} eventname={event.eventname} location={event.location} eventdate={event.eventdate} category={event.category}/>
             )}
     </CardGroup>
   );
