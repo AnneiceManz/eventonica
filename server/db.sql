@@ -28,7 +28,8 @@ CREATE TABLE public.events (
     id integer NOT NULL,
     title text,
     location text,
-    eventtime date
+    eventtime date,
+    isfavorite boolean DEFAULT false
 );
 
 
