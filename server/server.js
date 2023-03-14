@@ -38,12 +38,12 @@ app.get('/api/events', async (req, res) =>{
     //hardcode the events response for testing reasons. This call has one more event that the real DB 
     // const events = [
 
-    //     {id: 1, title: 'Women in Tech Techtonica Panel', location: 'Overland Park Convention Center'},
-    //     {id: 2, title: 'Japanese Cultural Education', location: 'Seattle Convention Center'},
-    //     {id: 3, title: "Haven 90's Party Night Club", location: 'Hilton Hotel Kansas City'},
-    //     {id: 4, title: 'Comedy Night at the Station', location: 'SF Hilton Hotel'},
-    //     {id: 5, title: 'A Decadent Arts Experience', location: 'West Ridge Mall'},
-    //     {id: 6, title: 'Techtonica Classroom Course', location: 'Techtonica HQ'}
+    //     {id: 1, eventname: 'Women in Tech Techtonica Panel', location: 'Overland Park Convention Center', isfavorite: false, category: Tech},
+    //     {id: 2, eventname: 'Japanese Cultural Education', location: 'Seattle Convention Center', isfavorite: false, category: Culture},
+    //     {id: 3, eventname: "Haven 90's Party Night Club", location: 'Hilton Hotel Kansas City', isfavorite: false, category: Celebrate},
+    //     {id: 4, eventname: 'Comedy Night at the Station', location: 'SF Hilton Hotel', isfavorite: false, category: Entertainment},
+    //     {id: 5, eventname: 'A Decadent Arts Experience', location: 'West Ridge Mall', isfavorite: false, category: Art/Museum},
+    //     {id: 6, eventname: 'Techtonica Classroom Course', location: 'Techtonica HQ', isfavorite: false, category: Course}
     //   ];
     // res.json(events);
 })
