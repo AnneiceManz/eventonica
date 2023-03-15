@@ -96,14 +96,23 @@ const initialState = {
           />
   
           <label for="in-eCategory">Event Category:</label>
-          <input
+          <select
             id="in-eCategory"
             type="text"
             value={state.category}
             onChange={(e) => {
               dispatch({ type: "editCategory", value: e.target.value });
-            }}
-          />
+            }}>
+              <option value="Celebrate">Celebrate</option>
+              <option value="Art/Musuem">Art/Museum</option>
+              <option value="Live Show">Live Show</option>
+              <option value="Tech">Tech</option>
+              <option value="Culture">Culture</option>
+              <option value="Music">Music</option>
+              <option value="Film">Film</option>
+              <option value="Meetup">Meetup</option>
+            </select>
+          
   
           <input id="submitEvent" type="submit" />
         </form>
