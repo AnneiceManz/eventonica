@@ -65,20 +65,19 @@ app.post("/api/events", async (req, res) => {
         let response = result.rows[0];
         console.log(response)
         res.json(response)
-    } catch (e) {
+    } catch (error) {
         console.log(error)
         return res.status(400).json({error})
     }
 })
 
-// Get one event
+// Get one event by id
 app.get('/api/events/:id', async (req, res) =>{
 
-    //real connection with the DB eventonica
     try{
         const { id } =req.params;
         const event = await db.query('SELECT * FROM events WHERE id = $1', [id]);
-        console.log(event.rows[0])
+        console.log(event.rows[0]);
         res.json(event.rows[0]);
 
     } catch(error){
@@ -88,6 +87,27 @@ app.get('/api/events/:id', async (req, res) =>{
     }
 })
 //Update event
+
+app.patch('/api/events/:id', async (req, res) => {
+    try {
+        const updateEvent = {
+            eventname: req.body.eventname,
+            location: req.body.location,
+            eventdate: req.body.eventdate,
+            category: req.body.category
+        }
+
+        const { id } = req.params;
+
+        const result = await db.query('UPDATE events SET eventname=$1, location=$2, eventdate=$3, category=$4 WHERE id =$5', [updateEvent.eventname, updateEvent.location, updateEvent.eventdate, updateEvent.category, id]
+);
+        console.log(result.rows[0])
+        res.json(result.rows[0])
+    } catch (error) {
+        console.log(error);
+        return res.status(400).json({error});
+    }
+})
 
 //Delete event
 
