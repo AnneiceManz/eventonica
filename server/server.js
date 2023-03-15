@@ -21,7 +21,7 @@ app.get("/", (req, res) => {
     res.json("Hello Techtonica Server for an app with Events");
   });
 
-
+//Get all events
 app.get('/api/events', async (req, res) =>{
 
     //real connection with the DB eventonica
@@ -49,6 +49,7 @@ app.get('/api/events', async (req, res) =>{
 })
 
 //Create a route for the POST
+//Create new event
 app.post("/api/events", async (req, res) => {
     //At the end --> save this event to the db
     // console.log(req.body)
@@ -69,6 +70,26 @@ app.post("/api/events", async (req, res) => {
         return res.status(400).json({error})
     }
 })
+
+// Get one event
+app.get('/api/events/:id', async (req, res) =>{
+
+    //real connection with the DB eventonica
+    try{
+        const { id } =req.params;
+        const event = await db.query('SELECT * FROM events WHERE id = $1', [id]);
+        console.log(event.rows[0])
+        res.json(event.rows[0]);
+
+    } catch(error){
+        console.log(error);
+        return res.status(400).json({error});
+
+    }
+})
+//Update event
+
+//Delete event
 
 
 
