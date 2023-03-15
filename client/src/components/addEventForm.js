@@ -29,22 +29,22 @@ const initialState = {
     }
   }
   
-  //ADD FORM, CHILD OF EVENTBOARD
+  //ADD FORM, CHILD OF EVENTS
   function AddEvent(props) {
     const [state, dispatch] = useReducer(reducer, initialState);
   
+    //Handles submitting form data to db
     const onSubmitForm = async (e) => {
       e.preventDefault();
       try {
         const body = state;
-        //console.log("Attempting to post...", JSON.stringify(body)); // TEST
   
         const response = await fetch("http://localhost:8080/api/events", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(body),
         });
-        const update = await response.json();
+        // const update = await response.json();
         window.alert("Event submitted!");
   
         props.fetchData();

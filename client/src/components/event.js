@@ -1,5 +1,6 @@
 import Card from 'react-bootstrap/Card';
 import Moment from "react-moment";
+import FavoriteButton from './favoriteButton';
 
 const EventCard = (props) =>{
 
@@ -13,6 +14,7 @@ const EventCard = (props) =>{
       <Card.Text>
         {props.location}
       </Card.Text>
+      <FavoriteButton />
     </Card.Body>
   </Card>
   )}
