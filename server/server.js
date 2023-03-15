@@ -110,7 +110,16 @@ app.patch('/api/events/:id', async (req, res) => {
 })
 
 //Delete event
-
+app.delete('/api/events/:id', async (req, res) => {
+    try {
+        const { id } =req.params;
+        const deleteEvent = await db.query('DELETE FROM events WHERE id=$1', [id])
+        res.json("Event was deleted!")
+    } catch (error) {
+        console.log(error);
+        return res.status(400).json({error});
+    }
+})
 
 
 app.listen(PORT, () => console.log(`Hola! Server running on Port http://localhost:${PORT}`));
