@@ -3,7 +3,7 @@ import React from 'react';
 const updateEventForm = () => {
     return (
         <div>
-            <span>Edit</span>
+            <span className='editDelete'>Edit</span>
         </div>
     );
 };
