@@ -5,7 +5,7 @@ import FavoriteButton from './favoriteButton';
 const EventCard = (props) =>{
 
     return(
-    <Card style={{ width: '18rem' }}>
+    <Card style={{ width: '18rem'}}>
     <Card.Body>
       <Card.Title>{props.eventname}</Card.Title>
       <Card.Subtitle className='mb-2 text-muted'>{props.category}</Card.Subtitle>

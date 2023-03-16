@@ -5,15 +5,15 @@ import { faHeart as faHeartEmpty } from '@fortawesome/free-regular-svg-icons'
 
 const FavoriteButton = (props) => {
 
-    const [isFavorite, setIsFavorite] = useState(false)
-    const onChange= (e) => {
-        e.preventDefault()
-        if (isFavorite===true) {
-            setIsFavorite(false)
-        } else {
-            setIsFavorite(true)
-        }
-    }
+    // const [isFavorite, setIsFavorite] = useState(false)
+    // const onChange= (e) => {
+    //     e.preventDefault()
+    //     if (isFavorite===true) {
+    //         setIsFavorite(false)
+    //     } else {
+    //         setIsFavorite(true)
+    //     }
+    // }
     const onClick= async (e) => {
         e.preventDefault()
         try {
