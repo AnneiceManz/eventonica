@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
-const updateEventForm = (props) => {
+const UpdateEventForm = (props) => {
     const [eventName, setEventName] = useState("");
     const [location, setLocation] = useState("");
     const [eventDate, setEventDate] = useState("")
     const [category, setCategory] = useState("")
-
-    const { id } =useParams();
+    const id= props.id
 
     useEffect (() => {
         async function fetchData() {
@@ -28,7 +27,7 @@ const updateEventForm = (props) => {
         fetch(`http://localhost:8080/api/events/${id}`, {
             method: 'PUT',
             headers: {"Content-Type":"application/json"},
-            body: JSON.stringify(body)
+            body: JSON.stringify(updateEvent)
         })
         .then((res) => res.json())
         .then(
@@ -59,7 +58,7 @@ const updateEventForm = (props) => {
             type="date"
             onChange={(e) => {
             e.preventDefault();
-            setDate(e.target.value);
+            setEventDate(e.target.value);
             }}
           />
   
@@ -70,7 +69,7 @@ const updateEventForm = (props) => {
             type="text"
             onChange={(e) => {
               e.preventDefault();
-              setDate(e.target.value);
+              setEventName(e.target.value);
             }}
           />
   
@@ -81,7 +80,7 @@ const updateEventForm = (props) => {
               type="text"
               onChange={(e) => {
                 e.preventDefault();
-                setDate(e.target.value);
+                setLocation(e.target.value);
               }}
           />
   
@@ -92,7 +91,7 @@ const updateEventForm = (props) => {
             type="text"
             onChange={(e) => {
               e.preventDefault();
-              setDate(e.target.value);
+              setCategory(e.target.value);
             }}>
               <option value="Celebrate">Celebrate</option>
               <option value="Art/Musuem">Art/Museum</option>
@@ -111,4 +110,4 @@ const updateEventForm = (props) => {
     );
 };
 
-export default updateEventForm;
+export default UpdateEventForm;
