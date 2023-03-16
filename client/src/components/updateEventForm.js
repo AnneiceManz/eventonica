@@ -5,17 +5,17 @@ const UpdateEventForm = (props) => {
     const [location, setLocation] = useState("");
     const [eventDate, setEventDate] = useState("")
     const [category, setCategory] = useState("")
-    const id= props.id
+    const id= props.eventId
 
     useEffect (() => {
         async function fetchData() {
             try {
                 let res = await fetch(`http://localhost:8080/api/events/${id}`);
                 let event = await res.json();
-                setEventName(event.eventname);
-                setLocation(event.location);
-                setEventDate(event.eventdate)
-                setCategory(event.category)
+                setEventName(props.eventname);
+                setLocation(props.location);
+                setEventDate(props.eventdate)
+                setCategory(props.category)
             } catch (error) {
                 
             }
@@ -27,7 +27,7 @@ const UpdateEventForm = (props) => {
         fetch(`http://localhost:8080/api/events/${id}`, {
             method: 'PUT',
             headers: {"Content-Type":"application/json"},
-            body: JSON.stringify(updateEvent)
+            body: JSON.stringify({eventname: props.eventname})
         })
         .then((res) => res.json())
         .then(

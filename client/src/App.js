@@ -9,7 +9,6 @@ function App() {
       <h1>Techtonica 2023 events</h1>
       <Events />
       <AddEvent />
-      <UpdateEventForm />
     </div>
   );
 }

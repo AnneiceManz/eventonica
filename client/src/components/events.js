@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import EventCard from "./event";
 import CardGroup from 'react-bootstrap/CardGroup';
+import UpdateEventForm from "./updateEventForm";
 
 
 
@@ -16,12 +17,21 @@ function Events() {
             });
           }, []);
 
+          const [eventId, setEventId] = useState(null)
+
+          const updateEvent = (id) => {
+            setEventId(id)
+          }
+
   return (
+    <>
     <CardGroup className="Events">
             {events.map(event =>
-            <EventCard key={event.id} eventname={event.eventname} location={event.location} eventdate={event.eventdate} category={event.category} isfavorite={event.isfavorite} id={event.id}/>
+            <EventCard key={event.id} eventname={event.eventname} location={event.location} eventdate={event.eventdate} category={event.category} isfavorite={event.isfavorite} id={event.id} updateEvent={updateEvent} />
             )}
-    </CardGroup>
+          </CardGroup>
+          <UpdateEventForm eventId={eventId} />
+          </>
   );
 }
 

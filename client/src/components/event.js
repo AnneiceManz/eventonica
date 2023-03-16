@@ -15,6 +15,7 @@ const EventCard = (props) =>{
         {props.location}
       </Card.Text>
       <FavoriteButton isfavorite={props.isfavorite} id={props.id}/>
+      <button onClick={()=> props.updateEvent(props.eventId)}>Update</button>
     </Card.Body>
   </Card>
   )}
