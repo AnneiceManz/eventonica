@@ -35,7 +35,7 @@ const UpdateEventForm = ({event}) => {
         fetch(`http://localhost:8080/api/events/${existingEvent.id}`, {
             method: 'PUT',
             headers: {"Content-Type":"application/json"},
-            body: JSON.stringify({eventname: event.eventname})
+            body: JSON.stringify({eventname: event.eventname, eventdate: event.eventdate, location: event.location, category: event.category})
         })
         .then((res) => res.json())
         .then(
@@ -69,7 +69,7 @@ const UpdateEventForm = ({event}) => {
           <input
             id="in-eDate"
             value={event.eventdate}
-            type="date"
+            type="text"
             onChange={(e) => {
             e.preventDefault();
             setUpdateToEvent(e.target.value);
