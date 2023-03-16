@@ -6,12 +6,27 @@ import { faHeart as faHeartEmpty } from '@fortawesome/free-regular-svg-icons'
 const FavoriteButton = (props) => {
 
     // const [isFavorite, setIsFavorite] = useState(false)
-    const onClick= (e) => {
-        // if (isFavorite===true) {
-        //     setIsFavorite(false)
-        // } else {
-        //     setIsFavorite(true)
-        // }
+    const onClick= async (e) => {
+        e.preventDefault()
+        try {
+            if (props.isfavorite===false) {
+            await fetch(`http://localhost:8080/api/events/${props.id}/favorite`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            } else {
+                            await fetch(`http://localhost:8080/api/events/${props.id}/favorite`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            }
+        } catch (error) {
+            
+        }
     }
 
     return (
