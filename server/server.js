@@ -26,7 +26,7 @@ app.get('/api/events', async (req, res) =>{
 
     //real connection with the DB eventonica
     try{
-        const { rows: events } = await db.query('SELECT * FROM events');
+        const { rows: events } = await db.query('SELECT events.*, COALESCE(favorites.user_id , -1)= $1 as isfavorite FROM events LEFT JOIN favorites ON events.id=favorites.event_id',[1]);
         res.send(events);
 
     } catch(error){
@@ -88,8 +88,11 @@ app.get('/api/events/:id', async (req, res) =>{
 })
 //Update event
 
-app.patch('/api/events/:id', async (req, res) => {
+app.put('/api/events/:id', async (req, res) => {
     try {
+        const { id } = req.params;
+        // const updateEvent= db.query('SELECT * FROM events WHERE id=$1'[id])
+        // console.log(updateEvent)
         const updateEvent = {
             eventname: req.body.eventname,
             location: req.body.location,
@@ -97,9 +100,7 @@ app.patch('/api/events/:id', async (req, res) => {
             category: req.body.category
         }
 
-        const { id } = req.params;
-
-        const result = await db.query('UPDATE events SET eventname=$1, location=$2, eventdate=$3, category=$4 WHERE id =$5', [updateEvent.eventname, updateEvent.location, updateEvent.eventdate, updateEvent.category, id]
+        const result = await db.query('UPDATE events SET eventname=$1, location=$2, eventdate=$3, category=$4 WHERE id =$5 RETURNING *', [updateEvent.eventname, updateEvent.location, updateEvent.eventdate, updateEvent.category, id]
 );
         console.log(result.rows[0])
         res.json(result.rows[0])
@@ -114,12 +115,15 @@ app.delete('/api/events/:id', async (req, res) => {
     try {
         const { id } =req.params;
         const deleteEvent = await db.query('DELETE FROM events WHERE id=$1', [id])
-        res.json("Event was deleted!")
+        res.json("Event was deleted")
     } catch (error) {
         console.log(error);
         return res.status(400).json({error});
     }
 })
+
+//favorites
+// app.put
 
 
 app.listen(PORT, () => console.log(`Hola! Server running on Port http://localhost:${PORT}`));

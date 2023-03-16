@@ -14,7 +14,7 @@ const EventCard = (props) =>{
       <Card.Text>
         {props.location}
       </Card.Text>
-      <FavoriteButton />
+      <FavoriteButton isfavorite={props.isfavorite}/>
     </Card.Body>
   </Card>
   )}
