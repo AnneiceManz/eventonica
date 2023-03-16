@@ -26,7 +26,7 @@ app.get('/api/events', async (req, res) =>{
 
     //real connection with the DB eventonica
     try{
-        const { rows: events } = await db.query('SELECT events.*, COALESCE(favorites.user_id , -1)= $1 as isfavorite FROM events LEFT JOIN favorites ON events.id=favorites.event_id',[1]);
+        const { rows: events } = await db.query('SELECT events.*, COALESCE(favorites.user_id , -1)= $1 as isfavorite FROM events LEFT JOIN favorites ON events.id=favorites.event_id AND favorites.user_id=$1',[1]);
         res.send(events);
 
     } catch(error){
@@ -122,12 +122,24 @@ app.delete('/api/events/:id', async (req, res) => {
     }
 })
 
-//favorites
+//add favorites
 app.put('/api/events/:id/favorite', async (req, res) => {
     try {
         const { id } =req.params;
         const addFavorite = await db.query('INSERT INTO favorites (user_id, event_id) VALUES ($1, $2)',[1, id])
         res.json("Event was added as a favorite!")
+    } catch (error) {
+        console.log(error)
+        return res.status(400).json({error})
+    }
+})
+
+//delete favorite
+app.delete('/api/events/:id/favorite', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const deleteFavorite = await db.query('DELETE from favorites WHERE event_id=$1 AND user_id=$2', [id, 1])
+        res.json("Event is no longer a favorite")
     } catch (error) {
         console.log(error)
         return res.status(400).json({error})
