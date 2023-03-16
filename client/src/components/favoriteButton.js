@@ -30,7 +30,7 @@ const FavoriteButton = (props) => {
         }
     }
 
-    const [isFavorite, setIsFavorite] = useState(false);
+    const [isFavorite, setIsFavorite] = useState(props.isFavorite);
     const [isLoading, setIsLoading] = useState(false)
     const handleOnClick= useCallback(() => {
         setIsLoading(true);

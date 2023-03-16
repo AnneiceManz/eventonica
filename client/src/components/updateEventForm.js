@@ -1,46 +1,60 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
-const UpdateEventForm = (props) => {
-    const [eventName, setEventName] = useState("");
-    const [location, setLocation] = useState("");
-    const [eventDate, setEventDate] = useState("")
-    const [category, setCategory] = useState("")
-    const id= props.eventId
+const UpdateEventForm = ({event}) => {
+    // const [eventName, setEventName] = useState("");
+    // const [location, setLocation] = useState("");
+    // const [eventDate, setEventDate] = useState("")
+    // const [category, setCategory] = useState("")
+    // const id= props.eventId
+    // const {initialEvent= {
+    //     id: null,
+    //     eventname: '',
+    //     location: '',
+    //     eventdate: '',
+    //     category: '',
+    // }} = props;
 
-    useEffect (() => {
-        async function fetchData() {
-            try {
-                let res = await fetch(`http://localhost:8080/api/events/${id}`);
-                let event = await res.json();
-                setEventName(props.eventname);
-                setLocation(props.location);
-                setEventDate(props.eventdate)
-                setCategory(props.category)
-            } catch (error) {
+    const [updateToEvent, setUpdateToEvent] = useState(event)
+
+    // useEffect (() => {
+    //     async function fetchData() {
+    //         try {
+    //             let res = await fetch(`http://localhost:8080/api/events/${id}`);
+    //             let event = await res.json();
+    //             setEventName(props.eventname);
+    //             setLocation(props.location);
+    //             setEventDate(props.eventdate)
+    //             setCategory(props.category)
+    //         } catch (error) {
                 
-            }
-        }
-        fetchData(id)
-    }, [])
-
-    function updateEvent() {
-        fetch(`http://localhost:8080/api/events/${id}`, {
+    //         }
+    //     }
+    //     fetchData(id)
+    // }, [])
+    function updateEvent(existingEvent) {
+        fetch(`http://localhost:8080/api/events/${existingEvent.id}`, {
             method: 'PUT',
             headers: {"Content-Type":"application/json"},
-            body: JSON.stringify({eventname: props.eventname})
+            body: JSON.stringify({eventname: event.eventname})
         })
         .then((res) => res.json())
         .then(
             (result)=> {
                 console.log(result);
-                if (result.success) {
-                    alert(result.message);
-                }
+                setUpdateToEvent(result)
+                // props.updateEvent(result)
             },
             (error) => {
                 alert(error)
             }
-        )
+            )
+        }
+        // let formatDate=event.date.slice(0,10)
+
+    function handleSubmit() {
+        if (event.id) {
+            updateEvent(event)
+        }
     }
 
     return (
@@ -49,52 +63,53 @@ const UpdateEventForm = (props) => {
         <form
           id="eventSubmission"
           action="#eventSubmission"
-          onSubmit={updateEvent}
+          onSubmit={handleSubmit}
         >
           <label for="in-eDate">Event Date:</label>
           <input
             id="in-eDate"
-            value={eventDate}
+            value={event.eventdate}
             type="date"
             onChange={(e) => {
             e.preventDefault();
-            setEventDate(e.target.value);
+            setUpdateToEvent(e.target.value);
             }}
           />
   
           <label for="in-eName">Event Name:</label>
           <input
             id="in-eName"
-            value={eventName}
+            value={event.eventname}
             type="text"
             onChange={(e) => {
               e.preventDefault();
-              setEventName(e.target.value);
+              setUpdateToEvent(e.target.value);
             }}
           />
   
           <label for="in-eLocation">Event Location:</label>
           <input
             id="in-eLocation"
-            value={location}
+            value={event.location}
               type="text"
               onChange={(e) => {
                 e.preventDefault();
-                setLocation(e.target.value);
+                setUpdateToEvent(e.target.value);
               }}
           />
   
           <label for="in-eCategory">Event Category:</label>
           <select
             id="in-eCategory"
-            value={category}
+            selected={event.category}
+            value={event.category}
             type="text"
             onChange={(e) => {
               e.preventDefault();
-              setCategory(e.target.value);
+              setUpdateToEvent(e.target.value);
             }}>
               <option value="Celebrate">Celebrate</option>
-              <option value="Art/Musuem">Art/Museum</option>
+              <option value="Art/Museum">Art/Museum</option>
               <option value="Live Show">Live Show</option>
               <option value="Tech">Tech</option>
               <option value="Culture">Culture</option>

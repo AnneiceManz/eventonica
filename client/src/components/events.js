@@ -17,20 +17,23 @@ function Events() {
             });
           }, []);
 
-          const [eventId, setEventId] = useState(null)
+          const [event, setEvent] = useState({})
 
-          const updateEvent = (id) => {
-            setEventId(id)
+          const updateEvent = (event) => {
+            console.log(event)
+            // let formatDate = event.date.splice(-1,14)
+            // event.date = formatDate
+            setEvent(event)
           }
 
   return (
     <>
     <CardGroup className="Events">
             {events.map(event =>
-            <EventCard key={event.id} eventname={event.eventname} location={event.location} eventdate={event.eventdate} category={event.category} isfavorite={event.isfavorite} id={event.id} updateEvent={updateEvent} />
+            <EventCard key={event.id} eventname={event.eventname} location={event.location} eventdate={event.eventdate} category={event.category} isfavorite={event.isfavorite} id={event.id} updateEvent={updateEvent} event={event}/>
             )}
           </CardGroup>
-          <UpdateEventForm eventId={eventId} />
+          <UpdateEventForm event={event} />
           </>
   );
 }
