@@ -1,6 +1,7 @@
 import Card from 'react-bootstrap/Card';
 import Moment from "react-moment";
 import FavoriteButton from './favoriteButton';
+import { Button } from 'semantic-ui-react'
 
 const EventCard = (props) =>{
 
@@ -16,8 +17,11 @@ const EventCard = (props) =>{
       </Card.Text>
       <FavoriteButton isfavorite={props.isfavorite} id={props.id}/>
       <div className='addDeleteDiv'>
-      <button onClick={()=> props.updateEvent(props.event)}>Update</button>
-      <button onClick={() => props.deleteEvent(props.id)}>Delete</button>
+        <Button.Group vertical compact size='mini'>
+
+      <Button color='yellow' onClick={()=> props.updateEvent(props.event)}>Update</Button>
+      <Button color='red' onClick={() => props.deleteEvent(props.id)}>Delete</Button>
+        </Button.Group>
       </div>
     </Card.Body>
   </Card>
