@@ -76,7 +76,7 @@ function AddEvent(props) {
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       open={open}
-      trigger={<Button size='medium' color="purple">Add Event</Button>}
+      trigger={<Button size='small' color="purple">Add Event</Button>}
     >
       <Modal.Header>Add Event</Modal.Header>
       <Modal.Content>

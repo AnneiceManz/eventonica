@@ -5,8 +5,8 @@ import AddEvent from './components/addEventForm';
 function App() {
   return (
     <div className="App">
-      <h1>My Events</h1>
       <AddEvent />
+      <h1>My Events</h1>
       <Events />
     </div>
   );
