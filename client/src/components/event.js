@@ -1,6 +1,7 @@
 import Card from 'react-bootstrap/Card';
 import Moment from "react-moment";
 import FavoriteButton from './favoriteButton';
+// import DeleteEvent from './DeleteEvent';
 
 const EventCard = (props) =>{
 
@@ -15,7 +16,11 @@ const EventCard = (props) =>{
         {props.location}
       </Card.Text>
       <FavoriteButton isfavorite={props.isfavorite} id={props.id}/>
+      <div className='addDeleteDiv'>
       <button onClick={()=> props.updateEvent(props.event)}>Update</button>
+      <button onClick={() => props.deleteEvent(props.id)}>Delete</button>
+      {/* <DeleteEvent id={props.event.id} event={props.event} /> */}
+      </div>
     </Card.Body>
   </Card>
   )}
