@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Form, Modal, Button } from 'semantic-ui-react'
 
 const UpdateEventForm = ({event}) => {
     // const [eventName, setEventName] = useState("");
@@ -57,29 +58,37 @@ const UpdateEventForm = ({event}) => {
             e.preventDefault()
         }
     }
+    const options = [
+      { key: "ce", text: "Celebrate", value: "Celebrate" },
+      { key: "a", text: "Art/Musuem", value: "Art/Museum" },
+      { key: "l", text: "Live Show", value: "Live Show" },
+      { key: "t", text: "Tech", value: "Tech" },
+      { key: "cu", text: "Culture", value: "Culture" },
+      { key: "mu", text: "Music", value: "Music" },
+      { key: "f", text: "Film", value: "Film" },
+      { key: "me", text: "Meetup", value: "Meetup" },
+    ];
 
+    const [open, setOpen] = useState(false);
     return (
-        <>
+        <div>
+          <Modal
+          onClose={() => setOpen(false)}
+          onOpen={() => setOpen(true)}
+          open={open}
+          trigger={<Button size='medium' color="purple">Update Event</Button>}
+          >
+
             <h2 className="tableTitle">Update Event</h2>
-        <form
+        <Form
           id="eventSubmission"
           action="#eventSubmission"
           onSubmit={handleSubmit}
         >
-          <label for="in-eDate">Event Date:</label>
-          <input
-            id="in-eDate"
-            value={event.eventdate}
-            type="text"
-            onChange={(e) => {
-
-            setUpdateToEvent(e.target.value);
-            }}
-          />
-  
-          <label for="in-eName">Event Name:</label>
-          <input
+          <Form.Group widths='equal'>
+          <Form.Input
             id="in-eName"
+            label='Event Name:'
             value={event.eventname}
             type="text"
             onChange={(e) => {
@@ -87,10 +96,9 @@ const UpdateEventForm = ({event}) => {
               setUpdateToEvent(e.target.value);
             }}
           />
-  
-          <label for="in-eLocation">Event Location:</label>
-          <input
+          <Form.Input
             id="in-eLocation"
+            label='Event Location:'
             value={event.location}
               type="text"
               onChange={(e) => {
@@ -98,31 +106,39 @@ const UpdateEventForm = ({event}) => {
                 setUpdateToEvent(e.target.value);
               }}
           />
-  
-          <label for="in-eCategory">Event Category:</label>
-          <select
+
+          </Form.Group>
+          <Form.Group widths='equal'>
+          <Form.Input
+            id="in-eDate"
+            label='Event Date:'
+            value={event.eventdate}
+            type="text"
+            onChange={(e) => {
+
+            setUpdateToEvent(e.target.value);
+            }}
+          />
+          <Form.Select
             id="in-eCategory"
+            label='Event Category'
+            options={options}
             selected={event.category}
             value={event.category}
             type="text"
             onChange={(e) => {
 
               setUpdateToEvent(e.target.value);
-            }}>
-              <option value="Celebrate">Celebrate</option>
-              <option value="Art/Museum">Art/Museum</option>
-              <option value="Live Show">Live Show</option>
-              <option value="Tech">Tech</option>
-              <option value="Culture">Culture</option>
-              <option value="Music">Music</option>
-              <option value="Film">Film</option>
-              <option value="Meetup">Meetup</option>
-            </select>
+            }}
+            />
+          </Form.Group>
           
   
           <input id="updateEvent" type="submit" />
-        </form>
-        </>
+
+</Form>
+          </Modal>
+        </div>
     );
 };
 
