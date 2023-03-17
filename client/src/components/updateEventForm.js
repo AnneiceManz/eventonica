@@ -51,9 +51,10 @@ const UpdateEventForm = ({event}) => {
         }
         // let formatDate=event.date.slice(0,10)
 
-    function handleSubmit() {
+    function handleSubmit(e) {
         if (event.id) {
             updateEvent(event)
+            e.preventDefault()
         }
     }
 
@@ -71,7 +72,7 @@ const UpdateEventForm = ({event}) => {
             value={event.eventdate}
             type="text"
             onChange={(e) => {
-            e.preventDefault();
+
             setUpdateToEvent(e.target.value);
             }}
           />
@@ -82,7 +83,7 @@ const UpdateEventForm = ({event}) => {
             value={event.eventname}
             type="text"
             onChange={(e) => {
-              e.preventDefault();
+
               setUpdateToEvent(e.target.value);
             }}
           />
@@ -93,7 +94,7 @@ const UpdateEventForm = ({event}) => {
             value={event.location}
               type="text"
               onChange={(e) => {
-                e.preventDefault();
+
                 setUpdateToEvent(e.target.value);
               }}
           />
@@ -105,7 +106,7 @@ const UpdateEventForm = ({event}) => {
             value={event.category}
             type="text"
             onChange={(e) => {
-              e.preventDefault();
+
               setUpdateToEvent(e.target.value);
             }}>
               <option value="Celebrate">Celebrate</option>

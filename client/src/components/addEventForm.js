@@ -45,9 +45,9 @@ const initialState = {
           body: JSON.stringify(body),
         });
         // const update = await response.json();
-        window.alert("Event submitted!");
+        // window.alert("Event submitted!");
   
-        props.fetchData();
+        // props.fetchData();
         dispatch({type: "wipe", value: {initialState}});
   
         window.location = "/";
