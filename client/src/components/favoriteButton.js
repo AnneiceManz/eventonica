@@ -60,7 +60,7 @@ const FavoriteButton = (props) => {
   }, [isFavorite]);
 
   return (
-    <Button size="mini" className="likebutton" onClick={handleOnClick} disabled={isLoading}>
+    <Button basic size="mini" onClick={handleOnClick} disabled={isLoading}>
       {isLoading ? (
         "Loading..."
       ) : isFavorite ? (

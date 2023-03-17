@@ -8,7 +8,7 @@ const EventCard = (props) => {
     <Card color="purple">
       <Card.Content>
         <Card.Header>{props.eventname}</Card.Header>
-        <Card.Meta className="mb-2 text-muted">{props.category}</Card.Meta>
+        <Card.Meta className="mb-2 text-muted">{!props.category ? ("Event") : (props.category) }</Card.Meta>
         <br />
         <Card.Meta className="mb-2 text-muted">
           Date:{" "}
