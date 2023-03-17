@@ -1,7 +1,8 @@
 import React, { useCallback, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
-import { faHeart as faHeartEmpty } from "@fortawesome/free-regular-svg-icons";
+import { Icon, Button } from 'semantic-ui-react'
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faHeart } from "@fortawesome/free-solid-svg-icons";
+// import { faHeart as faHeartEmpty } from "@fortawesome/free-regular-svg-icons";
 
 async function addFavorite(eventId) {
   try {
@@ -59,15 +60,15 @@ const FavoriteButton = (props) => {
   }, [isFavorite]);
 
   return (
-    <div className="likebutton" onClick={handleOnClick} disabled={isLoading}>
+    <Button size="mini" className="likebutton" onClick={handleOnClick} disabled={isLoading}>
       {isLoading ? (
         "Loading..."
       ) : isFavorite ? (
-        <FontAwesomeIcon icon={faHeart} className="faHeart" />
+        <Icon size="small" color="red" name="heart"/>
       ) : (
-        <FontAwesomeIcon icon={faHeartEmpty} className="faHeart"/>
+        <Icon size="small" color="red"name="heart outline"/>
       )}
-    </div>
+    </Button>
   );
 };
 

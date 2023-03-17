@@ -1,6 +1,6 @@
 import Moment from "react-moment";
 import FavoriteButton from "./favoriteButton";
-import { Button, Divider, Card, Grid, GridColumn } from "semantic-ui-react";
+import { Button, Card, Grid } from "semantic-ui-react";
 import UpdateEventForm from "./updateEventForm";
 
 const EventCard = (props) => {
@@ -19,15 +19,16 @@ const EventCard = (props) => {
           )}
         </Card.Meta>
         <Card.Description>{props.location}</Card.Description>
+        <Card.Content extra>
+
         <div className="likeEditDelete">
           <Grid centered columns={3}>
             <Grid.Column>
-
-        <FavoriteButton
-          isfavorite={props.isfavorite}
-          id={props.id}
-          loadEvents={props.loadEvents}
-        />
+              <FavoriteButton
+                isfavorite={props.isfavorite}
+                id={props.id}
+                loadEvents={props.loadEvents}
+              />
             </Grid.Column>
             <Grid.Column>
               <UpdateEventForm event={props.event} />
@@ -43,6 +44,7 @@ const EventCard = (props) => {
             </Grid.Column>
           </Grid>
         </div>
+        </Card.Content>
       </Card.Content>
     </Card>
   );
