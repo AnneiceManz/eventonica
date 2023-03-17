@@ -3,15 +3,19 @@
   align-items: center;
   justify-content: center;
   margin-top: 50px;
+  padding: 20px;
 }
 
 .Events {
   box-shadow: 1px, gray;
 }
-
+.addEvent{
+  padding-bottom: 20px;
+}
 
 h1 {
   color: #00556e;
   margin-bottom: 50px !important;
+  text-align: center;
 }
 
