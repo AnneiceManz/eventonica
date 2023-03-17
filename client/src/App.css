@@ -13,9 +13,22 @@
   padding-bottom: 20px;
 }
 
-h1 {
-  color: #00556e;
+
+.likeEditDelete {
+  width: 80%;
+  padding-top: 10px;
+}
+
+ .App h1 {
+  color: purple;
   margin-bottom: 50px !important;
   text-align: center;
+  font-size:40px;
+}
+
+.faHeart {
+  text-align: center;
+ color: red;
+ font-size: 2em;
 }
 

@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import EventCard from "./event";
-import CardGroup from "react-bootstrap/CardGroup";
-import UpdateEventForm from "./updateEventForm";
+
+import { Card } from 'semantic-ui-react'
 
 async function getEvents() {
   try {
@@ -49,7 +49,8 @@ function Events() {
 
   return (
     <>
-      <CardGroup className="Events">
+      <Card.Group centered itemsPerRow={4} className="Events">
+
         {events.map((event) => (
           <EventCard
             key={event.id}
@@ -65,8 +66,7 @@ function Events() {
             loadEvents={loadEvents}
           />
         ))}
-      </CardGroup>
-      <UpdateEventForm event={event} />
+      </Card.Group>
     </>
   );
 }

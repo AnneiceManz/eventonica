@@ -59,13 +59,13 @@ const FavoriteButton = (props) => {
   }, [isFavorite]);
 
   return (
-    <div onClick={handleOnClick} disabled={isLoading}>
+    <div className="likebutton" onClick={handleOnClick} disabled={isLoading}>
       {isLoading ? (
         "Loading..."
       ) : isFavorite ? (
-        <FontAwesomeIcon icon={faHeart} />
+        <FontAwesomeIcon icon={faHeart} className="faHeart" />
       ) : (
-        <FontAwesomeIcon icon={faHeartEmpty} />
+        <FontAwesomeIcon icon={faHeartEmpty} className="faHeart"/>
       )}
     </div>
   );
