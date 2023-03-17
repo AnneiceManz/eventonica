@@ -5,7 +5,7 @@ import AddEvent from './components/addEventForm';
 function App() {
   return (
     <div className="App">
-      <h1>Techtonica 2023 events</h1>
+      <h1>My Events</h1>
       <AddEvent />
       <Events />
     </div>

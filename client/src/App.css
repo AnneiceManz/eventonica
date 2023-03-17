@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Titan+One&display=swap');
+
 .App {
   display: grid;
   align-items: center;
@@ -21,10 +23,13 @@
 }
 
  .App h1 {
-  color: purple;
-  margin-bottom: 50px !important;
+  color: white;
+  margin-bottom: 30px !important;
   text-align: center;
-  font-size:40px;
+  font-size:65px;
+  font-family: 'Titan One', cursive;
+  background-color: #AB6FCA;
+  border-radius: 20px;
 }
 
 
